@@ -26,61 +26,50 @@ function addBookToLibrary() {
   counter ++;
 }
 
-function changeRead() {
-  if(readImput.checked === true){
-    readImput.value = "Read";
-  }
-  else {
-    readImput.value = "Not read";
-  }
-}
-changeRead();
-
 function createCards () {
   const bookBox = document.createElement("div");
   const removeCard= document.createElement("button")
   const cardInfo = document.createElement("div");
   const cardInfo1 = document.createElement("div");
   const cardInfo2 = document.createElement("div");
-  const cardInfo3 = document.createElement("input")
-    bookBox.classList.add("bookBox");
-    bookBox.setAttribute("data-number", counter)
-    books.appendChild(bookBox);
-    console.log(bookBox.dataset.number);
+  const cardInfo3 = document.createElement("input");
+
+  bookBox.classList.add("bookBox");
+  removeCard.classList.add("removeCard");
+  cardInfo.classList.add("titleInfo");
+  cardInfo1.classList.add("autorInfo");
+  cardInfo2.classList.add("pagesInfo");
+  cardInfo3.classList.add("readInfo");
+  cardInfo3.type = "checkbox";
+
+  bookBox.setAttribute("data-number", counter)
   
-    removeCard.classList.add("removeCard")
-    removeCard.addEventListener('click', () => {
-        let index = (bookBox.dataset.number) -1 ;
-        myLibrary.splice(index, 1);
-        bookBox.remove();
-        counter -- ;
-    })
-    bookBox.appendChild(removeCard);
+  cardInfo1.textContent = `Author: ${authorImput.value}`;
+  cardInfo2.textContent = `Number of pages: ${pagesImput.value}`;
   
-    cardInfo.classList.add("titleInfo");
-    cardInfo.textContent = `Title: ${titleImput.value}`;
-    bookBox.appendChild(cardInfo);
-  
-    cardInfo1.classList.add("autorInfo");
-    cardInfo1.textContent = `Author: ${authorImput.value}`;
-    bookBox.appendChild(cardInfo1);
-  
-    cardInfo2.classList.add("pagesInfo");
-    cardInfo2.textContent = `Number of pages: ${pagesImput.value}`;
-    bookBox.appendChild(cardInfo2);
-  
-    cardInfo3.type = "checkbox";
-    cardInfo3.classList.add("readInfo");
-    cardInfo3.addEventListener("click", () => {
-      if(cardInfo3.checked === true) {
-        cardInfo3.checked === false;
+  removeCard.addEventListener('click', () => {
+    let index = (bookBox.dataset.number) -1 ;
+    myLibrary.splice(index, 1);
+    bookBox.remove();
+    counter -- ;
+  })
+   
+  cardInfo3.addEventListener("click", () => {
+    if(cardInfo3.checked === true) {
+      cardInfo3.checked === false;
       }
-      else {
-        cardInfo3.checked === true;
+    else {
+      cardInfo3.checked === true;
       }
 
-    })
-    bookBox.appendChild(cardInfo3);
+  })
+    
+  books.appendChild(bookBox);
+  bookBox.appendChild(removeCard);
+  bookBox.appendChild(cardInfo);
+  bookBox.appendChild(cardInfo1);
+  bookBox.appendChild(cardInfo2);
+  bookBox.appendChild(cardInfo3);  
 }
 
 function showBook() {
