@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Library</h1></header>
+    <dialog>
+        <h2>New Book</h2>
+        <button id="closebt">Close</button>
+        <form action="submit">
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Name" required id="author">
+                <label for="author" class="form__label">Author</label>
+                <span></span>
+            </div>
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Name" required id="title">
+                <label for="title" class="form__label">Title</label>
+                <span></span>
+            </div>
+            <div class="form__group field">
+                <label for="pages" class="form__label">Número de páginas</label>
+                <input type="number" class="form__field" placeholder="Name" required id="pages">
+            </div>
+            <label class="container"> Have you read this book?
+                <input type="checkbox" id="read">
+                <svg viewBox="0 0 64 64" height="1em" width="1em">
+                  <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+                </svg>
+            </label>
+            <button class="beautiful-button" type="submit" id="submit">Submit</button>
+        </form>
+    </dialog>
+    <button class="beautiful-button" id="new-book-bt">New Book</button>
+    <div class="books"></div>
+    <script src="script.js"></script>
+</body>
+</html>
