@@ -9,26 +9,32 @@
 <body>
     <header><h1>Library</h1></header>
     <dialog>
-        <h2>New Book</h2>
-        <button id="closebt">Close</button>
+        <div class="dialogHeader">
+            <h2>New Book</h2>
+        <button class="button" id="closebt">
+            <span class="X"></span>
+            <span class="Y"></span>
+            <div class="close">Close</div>
+          </button>
+        </div>
         <form action="submit">
             <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Name" required id="author">
+                <input type="text" class="form__field" required id="author" autocomplete="off">
                 <label for="author" class="form__label">Author</label>
                 <span></span>
             </div>
             <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Name" required id="title">
+                <input type="text" class="form__field" required id="title" autocomplete="off">
                 <label for="title" class="form__label">Title</label>
                 <span></span>
             </div>
             <div class="form__group field">
                 <label for="pages" class="form__label">Número de páginas</label>
-                <input type="number" class="form__field" placeholder="Name" required id="pages">
+                <input type="number" class="form__field" required id="pages" autocomplete="off">
             </div>
             <label class="container"> Have you read this book?
                 <input type="checkbox" id="read">
-                <svg viewBox="0 0 64 64" height="1em" width="1em">
+                <svg viewBox="0 0 64 64" height="1.5rem" width="1.5rem">
                   <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
                 </svg>
             </label>
