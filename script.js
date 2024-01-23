@@ -28,7 +28,7 @@ function addBookToLibrary() {
 
 function createCards () {
   const bookBox = document.createElement("div");
-  const removeCard= document.createElement("div");
+  const removeCard= document.createElement("button");
   const cardInfo = document.createElement("div");
   const cardInfo1 = document.createElement("div");
   const cardInfo2 = document.createElement("div");
@@ -39,6 +39,7 @@ function createCards () {
   cardInfo1.classList.add("autorInfo");
   cardInfo2.classList.add("pagesInfo");
   cardInfo3.classList.add("readInfo");
+  removeCard.classList.add("removeCard")
   
   bookBox.setAttribute("data-number", counter);
   
@@ -46,11 +47,7 @@ function createCards () {
   cardInfo1.textContent = `Author: ${authorImput.value}`;
   cardInfo2.textContent = `Number of pages: ${pagesImput.value}`;
   cardInfo3.textContent = `${readImput.value}`;
-  removeCard.innerHTML = `<button class="button" id="closebt">
-  <span class="X"></span>
-  <span class="Y"></span>
-  <div class="close">Close</div>
-</button>`;
+  removeCard.textContent = "Remove";
 
   removeCard.addEventListener('click', () => {
     let index = (bookBox.dataset.number) -1 ;
