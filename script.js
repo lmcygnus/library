@@ -9,7 +9,7 @@ let readImput = document.querySelector("#read");
 let submit = document.querySelector("#submit");
 let books = document.querySelector(".books");
 let card = document.querySelectorAll(".bookBox");
-let counter = 0;
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -25,7 +25,6 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
   const newBook = new Book(titleImput.value, authorImput.value, pagesImput.value, readImput.checked);
   myLibrary.push(newBook);
-  counter ++;
 }
 
 function createCards () {
@@ -70,10 +69,8 @@ function createCards () {
 
   removeCard.addEventListener('click', () => {
     let index = (bookBox.dataset.number);
-    console.log(index);
     myLibrary.splice(index, 1);
     bookBox.remove();
-    counter -- ;
   })
     
   books.appendChild(bookBox);
@@ -84,8 +81,8 @@ function createCards () {
   bookBox.appendChild(removeCard);
 }
 
-submit.addEventListener("submit", (event) => {
-  event.preventDefault();
+submit.addEventListener("submit", (e) => {
+  e.preventDefault();
   dialog.close();
   addBookToLibrary();
   createCards();
