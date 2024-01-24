@@ -1,12 +1,14 @@
-let dialog = document.querySelector("dialog")
-let newbookbt = document.querySelector("dialog + #new-book-bt")
-let closebt = document.querySelector("dialog #closebt")
-let authorImput = document.querySelector("#author")
-let titleImput = document.querySelector("#title")
-let pagesImput = document.querySelector("#pages")
-let readImput = document.querySelector("#read")
-let submitImput = document.querySelector("#submit")
-let books = document.querySelector(".books")
+let dialog = document.querySelector("dialog");
+let newbookbt = document.querySelector("dialog + #new-book-bt");
+let closebt = document.querySelector("dialog #closebt");
+let form = document.querySelector("form");
+let authorImput = document.querySelector("#author");
+let titleImput = document.querySelector("#title");
+let pagesImput = document.querySelector("#pages");
+let readImput = document.querySelector("#read");
+let submitImput = document.querySelector("#submit");
+let books = document.querySelector(".books");
+let card = document.querySelectorAll(".bookBox");
 let counter = 0;
 const myLibrary = [];
 
@@ -21,7 +23,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-  const newBook = new Book(titleImput.value, authorImput.value, pagesImput.value, readImput.value);
+  const newBook = new Book(titleImput.value, authorImput.value, pagesImput.value, readImput.checked);
   myLibrary.push(newBook);
   counter ++;
 }
@@ -46,7 +48,22 @@ function createCards () {
   cardInfo.textContent = `Title: ${titleImput.value}`;
   cardInfo1.textContent = `Author: ${authorImput.value}`;
   cardInfo2.textContent = `Number of pages: ${pagesImput.value}`;
-  cardInfo3.textContent = `${readImput.value}`;
+  
+  if (readImput.checked == true) {
+    cardInfo3.textContent = "Read";
+  }
+  else {
+    cardInfo3.textContent = "Not readed"
+  }
+
+  cardInfo3.addEventListener("click", () => {
+    if(cardInfo3.textContent == "Read") {
+      cardInfo3.textContent = "Not readed";
+    }
+    else if(cardInfo3.textContent == "Not readed"){
+      cardInfo3.textContent = "Read";
+    }
+  })
   removeCard.textContent = "Remove";
 
   removeCard.addEventListener('click', () => {
@@ -70,18 +87,20 @@ submitImput.addEventListener("click", (e) => {
   addBookToLibrary();
   createCards();
   newbookbt.style.display = "inline-block";
+  books.style.display = "flex";
 })
 
-newbookbt.onclick = () => {
+newbookbt.addEventListener("click", () => {
+  form.reset();
   dialog.show();
   newbookbt.style.display = "none";
-  titleImput.value = "";
-  authorImput.value = "";
-  pagesImput.value = "";
-  readImput.checked === false;
-}
+  books.style.display = "none";
+})
 
 closebt.onclick = () => {
   dialog.close();
   newbookbt.style.display = "inline-block";
+  books.style.display = "flex";
 }
+
+
