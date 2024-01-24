@@ -84,8 +84,8 @@ function createCards () {
   bookBox.appendChild(removeCard);
 }
 
-submit.addEventListener("click", (e) => {
-  e.preventDefault();
+submit.addEventListener("submit", (event) => {
+  event.preventDefault();
   dialog.close();
   addBookToLibrary();
   createCards();
