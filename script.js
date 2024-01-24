@@ -6,7 +6,7 @@ let authorImput = document.querySelector("#author");
 let titleImput = document.querySelector("#title");
 let pagesImput = document.querySelector("#pages");
 let readImput = document.querySelector("#read");
-let submitImput = document.querySelector("#submit");
+let submit = document.querySelector("#submit");
 let books = document.querySelector(".books");
 let card = document.querySelectorAll(".bookBox");
 let counter = 0;
@@ -43,7 +43,9 @@ function createCards () {
   cardInfo3.classList.add("readInfo");
   removeCard.classList.add("removeCard")
   
-  bookBox.setAttribute("data-number", counter);
+  myLibrary.forEach((element, index) => {
+    bookBox.setAttribute("data-number", index); 
+  });
   
   cardInfo.textContent = `Title: ${titleImput.value}`;
   cardInfo1.textContent = `Author: ${authorImput.value}`;
@@ -67,7 +69,8 @@ function createCards () {
   removeCard.textContent = "Remove";
 
   removeCard.addEventListener('click', () => {
-    let index = (bookBox.dataset.number) -1 ;
+    let index = (bookBox.dataset.number);
+    console.log(index);
     myLibrary.splice(index, 1);
     bookBox.remove();
     counter -- ;
@@ -81,7 +84,7 @@ function createCards () {
   bookBox.appendChild(removeCard);
 }
 
-submitImput.addEventListener("click", (e) => {
+submit.addEventListener("click", (e) => {
   e.preventDefault();
   dialog.close();
   addBookToLibrary();
