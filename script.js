@@ -49,7 +49,8 @@ function createCards () {
   cardInfo.textContent = `Title: ${titleImput.value}`;
   cardInfo1.textContent = `Author: ${authorImput.value}`;
   cardInfo2.textContent = `Number of pages: ${pagesImput.value}`;
-  
+  removeCard.textContent = "Remove";
+
   if (readImput.checked == true) {
     cardInfo3.textContent = "Read";
   }
@@ -65,7 +66,6 @@ function createCards () {
       cardInfo3.textContent = "Read";
     }
   })
-  removeCard.textContent = "Remove";
 
   removeCard.addEventListener('click', () => {
     let index = (bookBox.dataset.number);
@@ -81,14 +81,14 @@ function createCards () {
   bookBox.appendChild(removeCard);
 }
 
-submit.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => {
   e.preventDefault();
   dialog.close();
   addBookToLibrary();
   createCards();
   newbookbt.style.display = "inline-block";
   books.style.display = "flex";
-})
+  });
 
 newbookbt.addEventListener("click", () => {
   form.reset();
